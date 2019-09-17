@@ -35,10 +35,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/bitutil"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/crypto/ecies"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common/bitutil"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/crypto/ecies"
+	"github.com/groshproject/grosh-core/rlp"
 	"github.com/golang/snappy"
 	"golang.org/x/crypto/sha3"
 )

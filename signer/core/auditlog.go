@@ -19,10 +19,10 @@ package core
 import (
 	"context"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/hexutil"
+	"github.com/groshproject/grosh-core/internal/ethapi"
+	"github.com/groshproject/grosh-core/log"
 )
 
 type AuditLogger struct {

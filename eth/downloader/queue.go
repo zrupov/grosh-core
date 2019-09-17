@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/prque"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/prque"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/metrics"
 )
 
 var (

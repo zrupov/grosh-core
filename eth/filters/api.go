@@ -25,13 +25,13 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/groshproject/grosh-core"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/hexutil"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/event"
+	"github.com/groshproject/grosh-core/rpc"
 )
 
 var (

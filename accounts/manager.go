@@ -21,8 +21,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/event"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/event"
 )
 
 // Config contains the settings of the global account manager.

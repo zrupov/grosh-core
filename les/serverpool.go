@@ -27,14 +27,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/discv5"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common/mclock"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/p2p/discv5"
+	"github.com/groshproject/grosh-core/p2p/enode"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 const (

@@ -22,14 +22,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/bitutil"
-	"github.com/ethereum/go-ethereum/core/bloombits"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/node"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/bitutil"
+	"github.com/groshproject/grosh-core/core/bloombits"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/event"
+	"github.com/groshproject/grosh-core/node"
 )
 
 func BenchmarkBloomBits512(b *testing.B) {

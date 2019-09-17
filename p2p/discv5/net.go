@@ -24,12 +24,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/mclock"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/p2p/netutil"
+	"github.com/groshproject/grosh-core/rlp"
 	"golang.org/x/crypto/sha3"
 )
 

@@ -20,12 +20,12 @@ import (
 	"path/filepath"
 	"reflect"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/event"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/rpc"
 )
 
 // ServiceContext is a collection of service independent options inherited from

@@ -20,11 +20,11 @@ package consensus
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core/state"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rpc"
 )
 
 // ChainReader defines a small collection of methods needed to access the local

@@ -22,17 +22,17 @@ import (
 	"errors"
 	"time"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/filters"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/hexutil"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/state"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/core/vm"
+	"github.com/groshproject/grosh-core/eth/filters"
+	"github.com/groshproject/grosh-core/internal/ethapi"
+	"github.com/groshproject/grosh-core/rlp"
+	"github.com/groshproject/grosh-core/rpc"
 )
 
 var (

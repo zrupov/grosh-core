@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/groshproject/grosh-core/accounts/keystore"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/log"
 )
 
 // deployNode creates a new node configuration based on some user input.

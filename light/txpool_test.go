@@ -23,13 +23,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/consensus/ethash"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/core/vm"
+	"github.com/groshproject/grosh-core/params"
 )
 
 type testTxRelay struct {

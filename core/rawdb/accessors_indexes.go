@@ -19,12 +19,12 @@ package rawdb
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 // ReadTxLookupEntry retrieves the positional metadata associated with a transaction

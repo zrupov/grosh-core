@@ -20,12 +20,12 @@ import (
 	"encoding/binary"
 	"sync/atomic"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/checkpointoracle"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/groshproject/grosh-core/accounts/abi/bind"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/contracts/checkpointoracle"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/params"
 )
 
 // checkpointOracle is responsible for offering the latest stable checkpoint

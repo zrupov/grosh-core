@@ -22,7 +22,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/groshproject/grosh-core/log"
 )
 
 func init() {

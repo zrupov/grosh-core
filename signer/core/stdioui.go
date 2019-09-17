@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core/internal/ethapi"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/rpc"
 )
 
 type StdIOUI struct {

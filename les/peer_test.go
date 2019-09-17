@@ -21,15 +21,15 @@ import (
 	"net"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/les/flowcontrol"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/mclock"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/eth"
+	"github.com/groshproject/grosh-core/les/flowcontrol"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/p2p/enode"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 const protocolVersion = lpv2

@@ -26,17 +26,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/les/flowcontrol"
-	"github.com/ethereum/go-ethereum/light"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/mclock"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/eth"
+	"github.com/groshproject/grosh-core/les/flowcontrol"
+	"github.com/groshproject/grosh-core/light"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/p2p/enode"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 var (

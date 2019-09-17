@@ -20,9 +20,9 @@ import (
 	"container/ring"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/log"
 )
 
 // chainRetriever is used by the unconfirmed block set to verify whether a previously

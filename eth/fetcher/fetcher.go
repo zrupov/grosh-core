@@ -22,11 +22,11 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/prque"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/prque"
+	"github.com/groshproject/grosh-core/consensus"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/log"
 )
 
 const (

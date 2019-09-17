@@ -19,9 +19,9 @@ package types
 import (
 	"bytes"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/rlp"
+	"github.com/groshproject/grosh-core/trie"
 )
 
 type DerivableList interface {

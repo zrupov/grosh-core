@@ -29,12 +29,12 @@ import (
 	"testing/quick"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/ethdb/leveldb"
-	"github.com/ethereum/go-ethereum/ethdb/memorydb"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/ethdb/leveldb"
+	"github.com/groshproject/grosh-core/ethdb/memorydb"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 func init() {

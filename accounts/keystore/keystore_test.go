@@ -26,9 +26,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/event"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/event"
 )
 
 var testSigData = make([]byte, 32)

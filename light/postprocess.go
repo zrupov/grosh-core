@@ -24,16 +24,16 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/bitutil"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/bitutil"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rlp"
+	"github.com/groshproject/grosh-core/trie"
 )
 
 // IndexerConfig includes a set of configs for chain indexers.

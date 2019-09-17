@@ -21,8 +21,8 @@ import (
 	"time"
 
 	"github.com/elastic/gosigar"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/p2p"
+	"github.com/groshproject/grosh-core/metrics"
+	"github.com/groshproject/grosh-core/p2p"
 )
 
 // meterCollector returns a function, which retrieves the count of a specific meter.

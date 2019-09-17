@@ -21,16 +21,16 @@ import (
 	"math/big"
 	"sync"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/signer/core"
+	"github.com/groshproject/grosh-core"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/hexutil"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/event"
+	"github.com/groshproject/grosh-core/internal/ethapi"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/rpc"
+	"github.com/groshproject/grosh-core/signer/core"
 )
 
 type ExternalBackend struct {

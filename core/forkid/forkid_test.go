@@ -21,9 +21,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 // TestCreation tests that different genesis and fork rule combinations result in

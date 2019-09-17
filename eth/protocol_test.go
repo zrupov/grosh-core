@@ -22,12 +22,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/eth/downloader"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/rlp"
 )
 
 func init() {

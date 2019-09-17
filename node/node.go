@@ -26,14 +26,14 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/internal/debug"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/event"
+	"github.com/groshproject/grosh-core/internal/debug"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/rpc"
 	"github.com/prometheus/tsdb/fileutil"
 )
 

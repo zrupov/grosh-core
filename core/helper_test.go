@@ -19,10 +19,10 @@ package core
 import (
 	"container/list"
 
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/event"
 )
 
 // Implement our EthTest Manager

@@ -33,11 +33,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/event"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/event"
 )
 
 var (

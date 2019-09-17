@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/groshproject/grosh-core/common"
 )
 
 func BenchmarkCutOriginal(b *testing.B) {

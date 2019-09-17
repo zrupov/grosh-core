@@ -19,15 +19,15 @@ package main
 import (
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/accounts/external"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/contracts/checkpointoracle"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/accounts/abi/bind"
+	"github.com/groshproject/grosh-core/accounts/external"
+	"github.com/groshproject/grosh-core/cmd/utils"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/contracts/checkpointoracle"
+	"github.com/groshproject/grosh-core/ethclient"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 

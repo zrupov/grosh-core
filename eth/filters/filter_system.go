@@ -25,14 +25,14 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/groshproject/grosh-core"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/event"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/rpc"
 )
 
 // Type determines the kind of filter and is used to put the filter in to

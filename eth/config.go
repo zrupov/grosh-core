@@ -24,13 +24,13 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/consensus/ethash"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/eth/downloader"
+	"github.com/groshproject/grosh-core/eth/gasprice"
+	"github.com/groshproject/grosh-core/miner"
+	"github.com/groshproject/grosh-core/params"
 )
 
 // DefaultConfig contains default settings for use on the Ethereum main net.

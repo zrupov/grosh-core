@@ -39,7 +39,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/groshproject/grosh-core/crypto"
 )
 
 // Ensure the KDF generates appropriately sized keys.

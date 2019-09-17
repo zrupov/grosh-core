@@ -35,10 +35,10 @@ import (
 
 	"io"
 
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/p2p"
+	"github.com/groshproject/grosh-core/params"
+	"github.com/groshproject/grosh-core/rpc"
 	"github.com/mohae/deepcopy"
 	"golang.org/x/net/websocket"
 )

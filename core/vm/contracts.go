@@ -22,12 +22,12 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/crypto/blake2b"
-	"github.com/ethereum/go-ethereum/crypto/bn256"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/math"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/crypto/blake2b"
+	"github.com/groshproject/grosh-core/crypto/bn256"
+	"github.com/groshproject/grosh-core/params"
 	"golang.org/x/crypto/ripemd160"
 )
 

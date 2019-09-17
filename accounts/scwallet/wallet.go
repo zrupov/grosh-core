@@ -33,12 +33,12 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
+	ethereum "github.com/groshproject/grosh-core"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/crypto"
+	"github.com/groshproject/grosh-core/log"
 	pcsc "github.com/gballet/go-libpcsclite"
 	"github.com/status-im/keycard-go/derivationpath"
 )

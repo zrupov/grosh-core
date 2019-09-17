@@ -25,16 +25,16 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/accounts/scwallet"
-	"github.com/ethereum/go-ethereum/accounts/usbwallet"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/signer/storage"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/accounts/keystore"
+	"github.com/groshproject/grosh-core/accounts/scwallet"
+	"github.com/groshproject/grosh-core/accounts/usbwallet"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/hexutil"
+	"github.com/groshproject/grosh-core/internal/ethapi"
+	"github.com/groshproject/grosh-core/log"
+	"github.com/groshproject/grosh-core/rlp"
+	"github.com/groshproject/grosh-core/signer/storage"
 )
 
 const (

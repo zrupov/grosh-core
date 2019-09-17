@@ -17,9 +17,9 @@
 package runtime
 
 import (
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/vm"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/core/vm"
 )
 
 func NewEnv(cfg *Config) *vm.EVM {

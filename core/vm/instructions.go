@@ -20,10 +20,10 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/math"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/params"
 	"golang.org/x/crypto/sha3"
 )
 

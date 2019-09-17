@@ -27,16 +27,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/signer/core"
-	"github.com/ethereum/go-ethereum/signer/fourbyte"
-	"github.com/ethereum/go-ethereum/signer/storage"
+	"github.com/groshproject/grosh-core/accounts"
+	"github.com/groshproject/grosh-core/accounts/keystore"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/hexutil"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/internal/ethapi"
+	"github.com/groshproject/grosh-core/rlp"
+	"github.com/groshproject/grosh-core/signer/core"
+	"github.com/groshproject/grosh-core/signer/fourbyte"
+	"github.com/groshproject/grosh-core/signer/storage"
 )
 
 //Used for testing

@@ -20,13 +20,13 @@ import (
 	"context"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/bitutil"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/bloombits"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/groshproject/grosh-core/common"
+	"github.com/groshproject/grosh-core/common/bitutil"
+	"github.com/groshproject/grosh-core/core"
+	"github.com/groshproject/grosh-core/core/bloombits"
+	"github.com/groshproject/grosh-core/core/rawdb"
+	"github.com/groshproject/grosh-core/core/types"
+	"github.com/groshproject/grosh-core/ethdb"
 )
 
 const (
