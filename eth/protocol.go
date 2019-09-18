@@ -44,7 +44,10 @@ var ProtocolVersions = []uint{eth63}
 var protocolLengths = map[uint]uint64{eth63: 17, eth62: 8}
 
 const protocolMaxMsgSize = 10 * 1024 * 1024 // Maximum cap on the size of a protocol message
-
+const (
+	NetworkId          = 6779503
+	ProtocolMaxMsgSize = 10 * 1024 * 1024 // Maximum cap on the size of a protocol message
+)
 // eth protocol message codes
 const (
 	// Protocol messages belonging to eth/62
