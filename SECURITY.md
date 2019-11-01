@@ -11,7 +11,7 @@ Audit reports are published in the `docs` folder: https://github.com/groshprojec
 
 | Scope | Date | Report Link |
 | ------- | ------- | ----------- |
-| `geth` | 20170425 | [pdf](https://github.com/groshproject/grosh-core/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
+| `grosh` | 20170425 | [pdf](https://github.com/groshproject/grosh-core/blob/master/docs/audits/2017-04-25_Grosh-audit_Truesec.pdf) |
 | `clef` | 20180914 | [pdf](https://github.com/groshproject/grosh-core/blob/master/docs/audits/2018-09-14_Clef-audit_NCC.pdf) |
 
 
