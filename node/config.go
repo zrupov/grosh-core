@@ -190,7 +190,7 @@ type Config struct {
 
 	staticNodesWarning     bool
 	trustedNodesWarning    bool
-	oldGethResourceWarning bool
+	oldGroshResourceWarning bool
 }
 
 // IPCEndpoint resolves an IPC endpoint based on a configured value, taking into
@@ -286,9 +286,9 @@ func (c *Config) ExtRPCEnabled() bool {
 // NodeName returns the devp2p node identifier.
 func (c *Config) NodeName() string {
 	name := c.name()
-	// Backwards compatibility: previous versions used title-cased "Geth", keep that.
+	// Backwards compatibility: previous versions used title-cased "Grosh", keep that.
 	if name == "grosh" || name == "grosh-testnet" {
-		name = "Geth"
+		name = "Grosh"
 	}
 	if c.UserIdent != "" {
 		name += "/" + c.UserIdent
@@ -313,7 +313,7 @@ func (c *Config) name() string {
 }
 
 // These resources are resolved differently for "grosh" instances.
-var isOldGethResource = map[string]bool{
+var isOldGroshResource = map[string]bool{
 	"chaindata":          true,
 	"nodes":              true,
 	"nodekey":            true,
@@ -331,14 +331,14 @@ func (c *Config) ResolvePath(path string) string {
 	}
 	// Backwards-compatibility: ensure that data directory files created
 	// by grosh 1.4 are used if they exist.
-	if warn, isOld := isOldGethResource[path]; isOld {
+	if warn, isOld := isOldGroshResource[path]; isOld {
 		oldpath := ""
 		if c.name() == "grosh" {
 			oldpath = filepath.Join(c.DataDir, path)
 		}
 		if oldpath != "" && common.FileExist(oldpath) {
 			if warn {
-				c.warnOnce(&c.oldGethResourceWarning, "Using deprecated resource file %s, please move this file to the 'grosh' subdirectory of datadir.", oldpath)
+				c.warnOnce(&c.oldGroshResourceWarning, "Using deprecated resource file %s, please move this file to the 'grosh' subdirectory of datadir.", oldpath)
 			}
 			return oldpath
 		}
