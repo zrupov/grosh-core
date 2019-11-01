@@ -84,7 +84,7 @@ var dashboardContent = `
 									{{if .FaucetPage}}<li id="faucet_menu"><a onclick="load('#faucet')"><i class="fa fa-bath"></i> Crypto Faucet</a></li>{{end}}
 									<li id="connect_menu"><a><i class="fa fa-plug"></i> Connect Yourself</a>
 										<ul id="connect_list" class="nav child_menu">
-											<li><a onclick="$('#connect_menu').removeClass('active'); $('#connect_list').toggle(); load('#grosh')">Go Ethereum: Geth</a></li>
+											<li><a onclick="$('#connect_menu').removeClass('active'); $('#connect_list').toggle(); load('#grosh')">Go Ethereum: Grosh</a></li>
 											<li><a onclick="$('#connect_menu').removeClass('active'); $('#connect_list').toggle(); load('#mist')">Go Ethereum: Wallet & Mist</a></li>
 											<li><a onclick="$('#connect_menu').removeClass('active'); $('#connect_list').toggle(); load('#mobile')">Go Ethereum: Android & iOS</a></li>{{if .Ethash}}
 											<li><a onclick="$('#connect_menu').removeClass('active'); $('#connect_list').toggle(); load('#other')">Other Ethereum Clients</a></li>{{end}}

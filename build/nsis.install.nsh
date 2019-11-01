@@ -55,7 +55,7 @@ Function GetInstalledSize
   StrCpy $GetInstalledSize.total 0
 
   ${if} ${SectionIsSelected} ${GROSH_IDX}
-    SectionGetSize ${GETH_IDX} $0
+    SectionGetSize ${GROSH_IDX} $0
     IntOp $GetInstalledSize.total $GetInstalledSize.total + $0
   ${endif}
 
