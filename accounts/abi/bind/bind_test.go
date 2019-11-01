@@ -1494,7 +1494,7 @@ func TestJavaBindings(t *testing.T) {
 
 package bindtest;
 
-import org.ethereum.geth.*;
+import org.ethereum.grosh.*;
 import java.util.*;
 
 

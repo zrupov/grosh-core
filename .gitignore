@@ -46,3 +46,9 @@ profile.cov
 /dashboard/assets/package-lock.json
 
 **/yarn-error.log
+data/grosh/
+data/keystore/
+boot.key
+data/01.log
+data/history
+debug.log
