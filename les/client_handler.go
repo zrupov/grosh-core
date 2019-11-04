@@ -1,18 +1,18 @@
-// Copyright 2019 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2019 The go-grosh Authors
+// This file is part of the go-grosh library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-grosh library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-grosh library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
 package les
 
@@ -38,13 +38,13 @@ type clientHandler struct {
 	checkpoint *params.TrustedCheckpoint
 	fetcher    *lightFetcher
 	downloader *downloader.Downloader
-	backend    *LightEthereum
+	backend    *LightGrosh
 
 	closeCh chan struct{}
 	wg      sync.WaitGroup // WaitGroup used to track all connected peers.
 }
 
-func newClientHandler(ulcServers []string, ulcFraction int, checkpoint *params.TrustedCheckpoint, backend *LightEthereum) *clientHandler {
+func newClientHandler(ulcServers []string, ulcFraction int, checkpoint *params.TrustedCheckpoint, backend *LightGrosh) *clientHandler {
 	handler := &clientHandler{
 		backend: backend,
 		closeCh: make(chan struct{}),
@@ -96,7 +96,7 @@ func (h *clientHandler) handle(p *peer) error {
 	if h.backend.peers.Len() >= h.backend.config.LightPeers && !p.Peer.Info().Network.Trusted {
 		return p2p.DiscTooManyPeers
 	}
-	p.Log().Debug("Light Ethereum peer connected", "name", p.Name())
+	p.Log().Debug("Light Grosh peer connected", "name", p.Name())
 
 	// Execute the LES handshake
 	var (
@@ -106,12 +106,12 @@ func (h *clientHandler) handle(p *peer) error {
 		td     = h.backend.blockchain.GetTd(hash, number)
 	)
 	if err := p.Handshake(td, hash, number, h.backend.blockchain.Genesis().Hash(), nil); err != nil {
-		p.Log().Debug("Light Ethereum handshake failed", "err", err)
+		p.Log().Debug("Light Grosh handshake failed", "err", err)
 		return err
 	}
 	// Register the peer locally
 	if err := h.backend.peers.Register(p); err != nil {
-		p.Log().Error("Light Ethereum peer registration failed", "err", err)
+		p.Log().Error("Light Grosh peer registration failed", "err", err)
 		return err
 	}
 	serverConnectionGauge.Update(int64(h.backend.peers.Len()))
@@ -132,7 +132,7 @@ func (h *clientHandler) handle(p *peer) error {
 	// Spawn a main loop to handle all incoming messages.
 	for {
 		if err := h.handleMsg(p); err != nil {
-			p.Log().Debug("Light Ethereum message handling failed", "err", err)
+			p.Log().Debug("Light Grosh message handling failed", "err", err)
 			p.fcServer.DumpLogs()
 			return err
 		}
@@ -147,7 +147,7 @@ func (h *clientHandler) handleMsg(p *peer) error {
 	if err != nil {
 		return err
 	}
-	p.Log().Trace("Light Ethereum message arrived", "code", msg.Code, "bytes", msg.Size)
+	p.Log().Trace("Light Grosh message arrived", "code", msg.Code, "bytes", msg.Size)
 
 	if msg.Size > ProtocolMaxMsgSize {
 		return errResp(ErrMsgTooLarge, "%v > %v", msg.Size, ProtocolMaxMsgSize)

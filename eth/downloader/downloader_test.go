@@ -1,18 +1,18 @@
-// Copyright 2015 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2015 The go-grosh Authors
+// This file is part of the go-grosh library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-grosh library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-grosh library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
 package downloader
 
@@ -1166,7 +1166,7 @@ func testSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		starting <- struct{}{}
 		<-progress
 	}
-	checkProgress(t, tester.downloader, "pristine", ethereum.SyncProgress{})
+	checkProgress(t, tester.downloader, "pristine", grosh.SyncProgress{})
 
 	// Synchronise half the blocks and check initial progress
 	tester.newPeer("peer-half", protocol, chain.shorten(chain.len()/2))
@@ -1180,7 +1180,7 @@ func testSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		}
 	}()
 	<-starting
-	checkProgress(t, tester.downloader, "initial", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "initial", grosh.SyncProgress{
 		HighestBlock: uint64(chain.len()/2 - 1),
 	})
 	progress <- struct{}{}
@@ -1196,7 +1196,7 @@ func testSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		}
 	}()
 	<-starting
-	checkProgress(t, tester.downloader, "completing", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "completing", grosh.SyncProgress{
 		StartingBlock: uint64(chain.len()/2 - 1),
 		CurrentBlock:  uint64(chain.len()/2 - 1),
 		HighestBlock:  uint64(chain.len() - 1),
@@ -1205,14 +1205,14 @@ func testSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 	// Check final progress after successful sync
 	progress <- struct{}{}
 	pending.Wait()
-	checkProgress(t, tester.downloader, "final", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "final", grosh.SyncProgress{
 		StartingBlock: uint64(chain.len()/2 - 1),
 		CurrentBlock:  uint64(chain.len() - 1),
 		HighestBlock:  uint64(chain.len() - 1),
 	})
 }
 
-func checkProgress(t *testing.T, d *Downloader, stage string, want ethereum.SyncProgress) {
+func checkProgress(t *testing.T, d *Downloader, stage string, want grosh.SyncProgress) {
 	// Mark this method as a helper to report errors at callsite, not in here
 	t.Helper()
 
@@ -1250,7 +1250,7 @@ func testForkedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		starting <- struct{}{}
 		<-progress
 	}
-	checkProgress(t, tester.downloader, "pristine", ethereum.SyncProgress{})
+	checkProgress(t, tester.downloader, "pristine", grosh.SyncProgress{})
 
 	// Synchronise with one of the forks and check progress
 	tester.newPeer("fork A", protocol, chainA)
@@ -1264,7 +1264,7 @@ func testForkedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 	}()
 	<-starting
 
-	checkProgress(t, tester.downloader, "initial", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "initial", grosh.SyncProgress{
 		HighestBlock: uint64(chainA.len() - 1),
 	})
 	progress <- struct{}{}
@@ -1283,7 +1283,7 @@ func testForkedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		}
 	}()
 	<-starting
-	checkProgress(t, tester.downloader, "forking", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "forking", grosh.SyncProgress{
 		StartingBlock: uint64(testChainBase.len()) - 1,
 		CurrentBlock:  uint64(chainA.len() - 1),
 		HighestBlock:  uint64(chainB.len() - 1),
@@ -1292,7 +1292,7 @@ func testForkedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 	// Check final progress after successful sync
 	progress <- struct{}{}
 	pending.Wait()
-	checkProgress(t, tester.downloader, "final", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "final", grosh.SyncProgress{
 		StartingBlock: uint64(testChainBase.len()) - 1,
 		CurrentBlock:  uint64(chainB.len() - 1),
 		HighestBlock:  uint64(chainB.len() - 1),
@@ -1324,7 +1324,7 @@ func testFailedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		starting <- struct{}{}
 		<-progress
 	}
-	checkProgress(t, tester.downloader, "pristine", ethereum.SyncProgress{})
+	checkProgress(t, tester.downloader, "pristine", grosh.SyncProgress{})
 
 	// Attempt a full sync with a faulty peer
 	brokenChain := chain.shorten(chain.len())
@@ -1343,7 +1343,7 @@ func testFailedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		}
 	}()
 	<-starting
-	checkProgress(t, tester.downloader, "initial", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "initial", grosh.SyncProgress{
 		HighestBlock: uint64(brokenChain.len() - 1),
 	})
 	progress <- struct{}{}
@@ -1366,7 +1366,7 @@ func testFailedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 	// Check final progress after successful sync
 	progress <- struct{}{}
 	pending.Wait()
-	checkProgress(t, tester.downloader, "final", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "final", grosh.SyncProgress{
 		CurrentBlock: uint64(chain.len() - 1),
 		HighestBlock: uint64(chain.len() - 1),
 	})
@@ -1395,7 +1395,7 @@ func testFakedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		starting <- struct{}{}
 		<-progress
 	}
-	checkProgress(t, tester.downloader, "pristine", ethereum.SyncProgress{})
+	checkProgress(t, tester.downloader, "pristine", grosh.SyncProgress{})
 
 	// Create and sync with an attacker that promises a higher chain than available.
 	brokenChain := chain.shorten(chain.len())
@@ -1414,7 +1414,7 @@ func testFakedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		}
 	}()
 	<-starting
-	checkProgress(t, tester.downloader, "initial", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "initial", grosh.SyncProgress{
 		HighestBlock: uint64(brokenChain.len() - 1),
 	})
 	progress <- struct{}{}
@@ -1434,7 +1434,7 @@ func testFakedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 		}
 	}()
 	<-starting
-	checkProgress(t, tester.downloader, "completing", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "completing", grosh.SyncProgress{
 		CurrentBlock: afterFailedSync.CurrentBlock,
 		HighestBlock: uint64(validChain.len() - 1),
 	})
@@ -1442,7 +1442,7 @@ func testFakedSyncProgress(t *testing.T, protocol int, mode SyncMode) {
 	// Check final progress after successful sync.
 	progress <- struct{}{}
 	pending.Wait()
-	checkProgress(t, tester.downloader, "final", ethereum.SyncProgress{
+	checkProgress(t, tester.downloader, "final", grosh.SyncProgress{
 		CurrentBlock: uint64(validChain.len() - 1),
 		HighestBlock: uint64(validChain.len() - 1),
 	})

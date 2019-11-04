@@ -1,18 +1,18 @@
-// Copyright 2018 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2018 The go-grosh Authors
+// This file is part of the go-grosh library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-grosh library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-grosh library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
 // +build none
 
@@ -92,11 +92,11 @@ func main() {
 	time.Sleep(3 * time.Second)
 
 	for _, node := range nodes {
-		var ethereum *eth.Ethereum
-		if err := node.Service(&ethereum); err != nil {
+		var grosh *eth.Grosh
+		if err := node.Service(&grosh); err != nil {
 			panic(err)
 		}
-		if err := ethereum.StartMining(1); err != nil {
+		if err := grosh.StartMining(1); err != nil {
 			panic(err)
 		}
 	}
@@ -108,8 +108,8 @@ func main() {
 		index := rand.Intn(len(faucets))
 
 		// Fetch the accessor for the relevant signer
-		var ethereum *eth.Ethereum
-		if err := nodes[index%len(nodes)].Service(&ethereum); err != nil {
+		var grosh *eth.Grosh
+		if err := nodes[index%len(nodes)].Service(&grosh); err != nil {
 			panic(err)
 		}
 		// Create a self transaction and inject into the pool
@@ -117,13 +117,13 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		if err := ethereum.TxPool().AddLocal(tx); err != nil {
+		if err := grosh.TxPool().AddLocal(tx); err != nil {
 			panic(err)
 		}
 		nonces[index]++
 
 		// Wait if we're too saturated
-		if pend, _ := ethereum.TxPool().Stats(); pend > 2048 {
+		if pend, _ := grosh.TxPool().Stats(); pend > 2048 {
 			time.Sleep(100 * time.Millisecond)
 		}
 	}
@@ -149,7 +149,7 @@ func makeGenesis(faucets []*ecdsa.PrivateKey) *core.Genesis {
 }
 
 func makeMiner(genesis *core.Genesis) (*node.Node, error) {
-	// Define the basic configurations for the Ethereum node
+	// Define the basic configurations for the Grosh node
 	datadir, _ := ioutil.TempDir("", "")
 
 	config := &node.Config{
@@ -164,7 +164,7 @@ func makeMiner(genesis *core.Genesis) (*node.Node, error) {
 		NoUSB:             true,
 		UseLightweightKDF: true,
 	}
-	// Start the node and configure a full Ethereum node on it
+	// Start the node and configure a full Grosh node on it
 	stack, err := node.New(config)
 	if err != nil {
 		return nil, err

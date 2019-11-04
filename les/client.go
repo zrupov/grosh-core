@@ -1,20 +1,20 @@
-// Copyright 2016 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2016 The go-grosh Authors
+// This file is part of the go-grosh library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-grosh library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-grosh library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package les implements the Light Ethereum Subprotocol.
+// Package les implements the Light Grosh Subprotocol.
 package les
 
 import (
@@ -45,7 +45,7 @@ import (
 	"github.com/groshproject/grosh-core/rpc"
 )
 
-type LightEthereum struct {
+type LightGrosh struct {
 	lesCommons
 
 	reqDist    *requestDistributor
@@ -67,7 +67,7 @@ type LightEthereum struct {
 	netRPCService  *ethapi.PublicNetAPI
 }
 
-func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
+func New(ctx *node.ServiceContext, config *eth.Config) (*LightGrosh, error) {
 	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "eth/db/chaindata/")
 	if err != nil {
 		return nil, err
@@ -79,7 +79,7 @@ func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
 	log.Info("Initialised chain configuration", "config", chainConfig)
 
 	peers := newPeerSet()
-	leth := &LightEthereum{
+	leth := &LightGrosh{
 		lesCommons: lesCommons{
 			genesis:     genesisHash,
 			config:      config,
@@ -173,9 +173,9 @@ func (s *LightDummyAPI) Mining() bool {
 	return false
 }
 
-// APIs returns the collection of RPC services the ethereum package offers.
+// APIs returns the collection of RPC services the grosh package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
-func (s *LightEthereum) APIs() []rpc.API {
+func (s *LightGrosh) APIs() []rpc.API {
 	return append(ethapi.GetAPIs(s.ApiBackend), []rpc.API{
 		{
 			Namespace: "eth",
@@ -206,20 +206,20 @@ func (s *LightEthereum) APIs() []rpc.API {
 	}...)
 }
 
-func (s *LightEthereum) ResetWithGenesisBlock(gb *types.Block) {
+func (s *LightGrosh) ResetWithGenesisBlock(gb *types.Block) {
 	s.blockchain.ResetWithGenesisBlock(gb)
 }
 
-func (s *LightEthereum) BlockChain() *light.LightChain      { return s.blockchain }
-func (s *LightEthereum) TxPool() *light.TxPool              { return s.txPool }
-func (s *LightEthereum) Engine() consensus.Engine           { return s.engine }
-func (s *LightEthereum) LesVersion() int                    { return int(ClientProtocolVersions[0]) }
-func (s *LightEthereum) Downloader() *downloader.Downloader { return s.handler.downloader }
-func (s *LightEthereum) EventMux() *event.TypeMux           { return s.eventMux }
+func (s *LightGrosh) BlockChain() *light.LightChain      { return s.blockchain }
+func (s *LightGrosh) TxPool() *light.TxPool              { return s.txPool }
+func (s *LightGrosh) Engine() consensus.Engine           { return s.engine }
+func (s *LightGrosh) LesVersion() int                    { return int(ClientProtocolVersions[0]) }
+func (s *LightGrosh) Downloader() *downloader.Downloader { return s.handler.downloader }
+func (s *LightGrosh) EventMux() *event.TypeMux           { return s.eventMux }
 
 // Protocols implements node.Service, returning all the currently configured
 // network protocols to start.
-func (s *LightEthereum) Protocols() []p2p.Protocol {
+func (s *LightGrosh) Protocols() []p2p.Protocol {
 	return s.makeProtocols(ClientProtocolVersions, s.handler.runPeer, func(id enode.ID) interface{} {
 		if p := s.peers.Peer(peerIdToString(id)); p != nil {
 			return p.Info()
@@ -229,8 +229,8 @@ func (s *LightEthereum) Protocols() []p2p.Protocol {
 }
 
 // Start implements node.Service, starting all internal goroutines needed by the
-// light ethereum protocol implementation.
-func (s *LightEthereum) Start(srvr *p2p.Server) error {
+// light grosh protocol implementation.
+func (s *LightGrosh) Start(srvr *p2p.Server) error {
 	log.Warn("Light client mode is an experimental feature")
 
 	// Start bloom request workers.
@@ -246,8 +246,8 @@ func (s *LightEthereum) Start(srvr *p2p.Server) error {
 }
 
 // Stop implements node.Service, terminating all internal goroutines used by the
-// Ethereum protocol.
-func (s *LightEthereum) Stop() error {
+// Grosh protocol.
+func (s *LightGrosh) Stop() error {
 	close(s.closeCh)
 	s.peers.Close()
 	s.reqDist.close()
@@ -263,12 +263,12 @@ func (s *LightEthereum) Stop() error {
 	s.serverPool.stop()
 	s.chainDb.Close()
 	s.wg.Wait()
-	log.Info("Light ethereum stopped")
+	log.Info("Light grosh stopped")
 	return nil
 }
 
 // SetClient sets the rpc client and binds the registrar contract.
-func (s *LightEthereum) SetContractBackend(backend bind.ContractBackend) {
+func (s *LightGrosh) SetContractBackend(backend bind.ContractBackend) {
 	if s.oracle == nil {
 		return
 	}

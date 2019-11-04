@@ -21,8 +21,8 @@ Section "Uninstall"
   SimpleFC::AdvRemoveRule "Grosh outgoing peers (TCP:30303)"
   SimpleFC::AdvRemoveRule "Grosh UDP discovery (UDP:30303)"
 
-  # Remove IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
-  ${un.EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\grosh.ipc"
+  # Remove IPC endpoint (https://github.com/grosh/EIPs/issues/147)
+  ${un.EnvVarUpdate} $0 "grosh_SOCKET" "R" "HKLM" "\\.\pipe\grosh.ipc"
 
   # Remove install directory from PATH
   Push "$INSTDIR"

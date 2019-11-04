@@ -20,7 +20,7 @@ Audit reports are published in the `docs` folder: https://github.com/groshprojec
 
 **Please do not file a public ticket** mentioning the vulnerability.
 
-To find out how to disclose a vulnerability in Ethereum visit [https://bounty.ethereum.org](https://bounty.ethereum.org) or email bounty@ethereum.org.
+To find out how to disclose a vulnerability in Grosh visit [https://bounty.grosh.org](https://bounty.grosh.org) or email bounty@grosh.org.
 
 The following key may be used to communicate sensitive information to developers.
 

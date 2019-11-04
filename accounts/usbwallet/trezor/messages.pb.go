@@ -96,17 +96,17 @@ const (
 	MessageType_MessageType_DebugLinkMemory      MessageType = 111
 	MessageType_MessageType_DebugLinkMemoryWrite MessageType = 112
 	MessageType_MessageType_DebugLinkFlashErase  MessageType = 113
-	// Ethereum
-	MessageType_MessageType_EthereumGetPublicKey     MessageType = 450
-	MessageType_MessageType_EthereumPublicKey        MessageType = 451
-	MessageType_MessageType_EthereumGetAddress       MessageType = 56
-	MessageType_MessageType_EthereumAddress          MessageType = 57
-	MessageType_MessageType_EthereumSignTx           MessageType = 58
-	MessageType_MessageType_EthereumTxRequest        MessageType = 59
-	MessageType_MessageType_EthereumTxAck            MessageType = 60
-	MessageType_MessageType_EthereumSignMessage      MessageType = 64
-	MessageType_MessageType_EthereumVerifyMessage    MessageType = 65
-	MessageType_MessageType_EthereumMessageSignature MessageType = 66
+	// Grosh
+	MessageType_MessageType_GroshGetPublicKey     MessageType = 450
+	MessageType_MessageType_GroshPublicKey        MessageType = 451
+	MessageType_MessageType_GroshGetAddress       MessageType = 56
+	MessageType_MessageType_GroshAddress          MessageType = 57
+	MessageType_MessageType_GroshSignTx           MessageType = 58
+	MessageType_MessageType_GroshTxRequest        MessageType = 59
+	MessageType_MessageType_GroshTxAck            MessageType = 60
+	MessageType_MessageType_GroshSignMessage      MessageType = 64
+	MessageType_MessageType_GroshVerifyMessage    MessageType = 65
+	MessageType_MessageType_GroshMessageSignature MessageType = 66
 	// NEM
 	MessageType_MessageType_NEMGetAddress       MessageType = 67
 	MessageType_MessageType_NEMAddress          MessageType = 68
@@ -306,16 +306,16 @@ var MessageType_name = map[int32]string{
 	111: "MessageType_DebugLinkMemory",
 	112: "MessageType_DebugLinkMemoryWrite",
 	113: "MessageType_DebugLinkFlashErase",
-	450: "MessageType_EthereumGetPublicKey",
-	451: "MessageType_EthereumPublicKey",
-	56:  "MessageType_EthereumGetAddress",
-	57:  "MessageType_EthereumAddress",
-	58:  "MessageType_EthereumSignTx",
-	59:  "MessageType_EthereumTxRequest",
-	60:  "MessageType_EthereumTxAck",
-	64:  "MessageType_EthereumSignMessage",
-	65:  "MessageType_EthereumVerifyMessage",
-	66:  "MessageType_EthereumMessageSignature",
+	450: "MessageType_GroshGetPublicKey",
+	451: "MessageType_GroshPublicKey",
+	56:  "MessageType_GroshGetAddress",
+	57:  "MessageType_GroshAddress",
+	58:  "MessageType_GroshSignTx",
+	59:  "MessageType_GroshTxRequest",
+	60:  "MessageType_GroshTxAck",
+	64:  "MessageType_GroshSignMessage",
+	65:  "MessageType_GroshVerifyMessage",
+	66:  "MessageType_GroshMessageSignature",
 	67:  "MessageType_NEMGetAddress",
 	68:  "MessageType_NEMAddress",
 	69:  "MessageType_NEMSignTx",
@@ -502,16 +502,16 @@ var MessageType_value = map[string]int32{
 	"MessageType_DebugLinkMemory":                           111,
 	"MessageType_DebugLinkMemoryWrite":                      112,
 	"MessageType_DebugLinkFlashErase":                       113,
-	"MessageType_EthereumGetPublicKey":                      450,
-	"MessageType_EthereumPublicKey":                         451,
-	"MessageType_EthereumGetAddress":                        56,
-	"MessageType_EthereumAddress":                           57,
-	"MessageType_EthereumSignTx":                            58,
-	"MessageType_EthereumTxRequest":                         59,
-	"MessageType_EthereumTxAck":                             60,
-	"MessageType_EthereumSignMessage":                       64,
-	"MessageType_EthereumVerifyMessage":                     65,
-	"MessageType_EthereumMessageSignature":                  66,
+	"MessageType_GroshGetPublicKey":                      450,
+	"MessageType_GroshPublicKey":                         451,
+	"MessageType_GroshGetAddress":                        56,
+	"MessageType_GroshAddress":                           57,
+	"MessageType_GroshSignTx":                            58,
+	"MessageType_GroshTxRequest":                         59,
+	"MessageType_GroshTxAck":                             60,
+	"MessageType_GroshSignMessage":                       64,
+	"MessageType_GroshVerifyMessage":                     65,
+	"MessageType_GroshMessageSignature":                  66,
 	"MessageType_NEMGetAddress":                             67,
 	"MessageType_NEMAddress":                                68,
 	"MessageType_NEMSignTx":                                 69,

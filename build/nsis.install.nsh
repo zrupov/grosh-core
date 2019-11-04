@@ -5,7 +5,7 @@ OutFile "${OUTPUTFILE}" # set through command line arguments
 # Links for "Add/Remove Programs"
 !define HELPURL "https://github.com/groshproject/grosh-core/issues"
 !define UPDATEURL "https://github.com/groshproject/grosh-core/releases"
-!define ABOUTURL "https://github.com/groshproject/grosh-core#ethereum-go"
+!define ABOUTURL "https://github.com/groshproject/grosh-core#grosh-go"
 !define /date NOW "%Y%m%d"
 
 PageEx license
@@ -29,13 +29,13 @@ Section "Grosh" GROSH_IDX
   SimpleFC::AdvRemoveRule "Grosh UDP discovery (UDP:30303)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Grosh incoming peers (TCP:30303)" ""  6 1 1 2147483647 1 "$INSTDIR\grosh.exe" "" "" "Ethereum" 30303 "" "" ""
-  SimpleFC::AdvAddRule "Grosh outgoing peers (TCP:30303)" ""  6 2 1 2147483647 1 "$INSTDIR\grosh.exe" "" "" "Ethereum" "" 30303 "" ""
-  SimpleFC::AdvAddRule "Grosh UDP discovery (UDP:30303)" "" 17 2 1 2147483647 1 "$INSTDIR\grosh.exe" "" "" "Ethereum" "" 30303 "" ""
+  SimpleFC::AdvAddRule "Grosh incoming peers (TCP:30303)" ""  6 1 1 2147483647 1 "$INSTDIR\grosh.exe" "" "" "Grosh" 30303 "" "" ""
+  SimpleFC::AdvAddRule "Grosh outgoing peers (TCP:30303)" ""  6 2 1 2147483647 1 "$INSTDIR\grosh.exe" "" "" "Grosh" "" 30303 "" ""
+  SimpleFC::AdvAddRule "Grosh UDP discovery (UDP:30303)" "" 17 2 1 2147483647 1 "$INSTDIR\grosh.exe" "" "" "Grosh" "" 30303 "" ""
 
-  # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\grosh.ipc"
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\grosh.ipc"
+  # Set default IPC endpoint (https://github.com/grosh/EIPs/issues/147)
+  ${EnvVarUpdate} $0 "GROSH_SOCKET" "R" "HKLM" "\\.\pipe\grosh.ipc"
+  ${EnvVarUpdate} $0 "GROSH_SOCKET" "A" "HKLM" "\\.\pipe\grosh.ipc"
 
   # Add instdir to PATH
   Push "$INSTDIR"
