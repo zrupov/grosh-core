@@ -48,7 +48,7 @@ import (
 	"github.com/groshproject/grosh-core/core/types"
 	"github.com/groshproject/grosh-core/eth"
 	"github.com/groshproject/grosh-core/eth/downloader"
-	"github.com/groshproject/grosh-core/ethclient"
+	"github.com/groshproject/grosh-core/groclient"
 	"github.com/groshproject/grosh-core/grostats"
 	"github.com/groshproject/grosh-core/les"
 	"github.com/groshproject/grosh-core/log"
@@ -199,7 +199,7 @@ type request struct {
 type faucet struct {
 	config *params.ChainConfig // Chain configurations for signing
 	stack  *node.Node          // Grosh protocol stack
-	client *ethclient.Client   // Client connection to the Grosh chain
+	client *groclient.Client   // Client connection to the Grosh chain
 	index  []byte              // Index page to serve up on the web
 
 	keystore *keystore.KeyStore // Keystore containing the single signer
@@ -271,7 +271,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 		stack.Stop()
 		return nil, err
 	}
-	client := ethclient.NewClient(api)
+	client := groclient.NewClient(api)
 
 	return &faucet{
 		config:   genesis.Config,

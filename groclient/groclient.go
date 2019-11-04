@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package ethclient provides a client for the Grosh RPC API.
-package ethclient
+// Package groclient provides a client for the Grosh RPC API.
+package groclient
 
 import (
 	"context"

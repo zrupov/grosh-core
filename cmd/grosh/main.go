@@ -36,7 +36,7 @@ import (
 	"github.com/groshproject/grosh-core/console"
 	"github.com/groshproject/grosh-core/eth"
 	"github.com/groshproject/grosh-core/eth/downloader"
-	"github.com/groshproject/grosh-core/ethclient"
+	"github.com/groshproject/grosh-core/groclient"
 	"github.com/groshproject/grosh-core/internal/debug"
 	"github.com/groshproject/grosh-core/les"
 	"github.com/groshproject/grosh-core/log"
@@ -340,7 +340,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 	if err != nil {
 		utils.Fatalf("Failed to attach to self: %v", err)
 	}
-	ethClient := ethclient.NewClient(rpcClient)
+	groclient := groclient.NewClient(rpcClient)
 
 	// Set contract backend for grosh service if local node
 	// is serving LES requests.
@@ -349,7 +349,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 		if err := stack.Service(&ethService); err != nil {
 			utils.Fatalf("Failed to retrieve grosh service: %v", err)
 		}
-		ethService.SetContractBackend(ethClient)
+		ethService.SetContractBackend(groclient)
 	}
 	// Set contract backend for les service if local node is
 	// running as a light client.
@@ -358,7 +358,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 		if err := stack.Service(&lesService); err != nil {
 			utils.Fatalf("Failed to retrieve light grosh service: %v", err)
 		}
-		lesService.SetContractBackend(ethClient)
+		lesService.SetContractBackend(groclient)
 	}
 
 	go func() {
@@ -385,7 +385,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 				}
 				derivationPaths = append(derivationPaths, accounts.DefaultBaseDerivationPath)
 
-				event.Wallet.SelfDerive(derivationPaths, ethClient)
+				event.Wallet.SelfDerive(derivationPaths, groclient)
 
 			case accounts.WalletDropped:
 				log.Info("Old wallet dropped", "url", event.Wallet.URL())

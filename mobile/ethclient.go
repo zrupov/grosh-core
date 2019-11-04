@@ -22,17 +22,17 @@ import (
 	"math/big"
 
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethclient"
+	"github.com/groshproject/grosh-core/groclient"
 )
 
 // GroshClient provides access to the Grosh APIs.
 type GroshClient struct {
-	client *ethclient.Client
+	client *groclient.Client
 }
 
 // NewGroshClient connects a client to the given URL.
 func NewGroshClient(rawurl string) (client *GroshClient, _ error) {
-	rawClient, err := ethclient.Dial(rawurl)
+	rawClient, err := groclient.Dial(rawurl)
 	return &GroshClient{rawClient}, err
 }
 

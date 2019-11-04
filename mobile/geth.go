@@ -27,7 +27,7 @@ import (
 	"github.com/groshproject/grosh-core/core"
 	"github.com/groshproject/grosh-core/eth"
 	"github.com/groshproject/grosh-core/eth/downloader"
-	"github.com/groshproject/grosh-core/ethclient"
+	"github.com/groshproject/grosh-core/groclient"
 	"github.com/groshproject/grosh-core/grostats"
 	"github.com/groshproject/grosh-core/internal/debug"
 	"github.com/groshproject/grosh-core/les"
@@ -212,7 +212,7 @@ func (n *Node) GetGroshClient() (client *GroshClient, _ error) {
 	if err != nil {
 		return nil, err
 	}
-	return &GroshClient{ethclient.NewClient(rpc)}, nil
+	return &GroshClient{groclient.NewClient(rpc)}, nil
 }
 
 // GetNodeInfo gathers and returns a collection of metadata known about the host.
