@@ -47,7 +47,7 @@ import (
 	"github.com/groshproject/grosh-core/eth/downloader"
 	"github.com/groshproject/grosh-core/eth/gasprice"
 	"github.com/groshproject/grosh-core/grodb"
-	"github.com/groshproject/grosh-core/ethstats"
+	"github.com/groshproject/grosh-core/grostats"
 	"github.com/groshproject/grosh-core/graphql"
 	"github.com/groshproject/grosh-core/les"
 	"github.com/groshproject/grosh-core/log"
@@ -501,9 +501,9 @@ var (
 		Usage: "Sets a cap on gas that can be used in eth_call/estimateGas",
 	}
 	// Logging and debug settings
-	EthStatsURLFlag = cli.StringFlag{
-		Name:  "ethstats",
-		Usage: "Reporting URL of a ethstats service (nodename:secret@host:port)",
+	GrostatsURLFlag = cli.StringFlag{
+		Name:  "grostats",
+		Usage: "Reporting URL of a grostats service (nodename:secret@host:port)",
 	}
 	FakePoWFlag = cli.BoolFlag{
 		Name:  "fakepow",
@@ -1572,9 +1572,9 @@ func RegisterShhService(stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// RegisterEthStatsService configures the Grosh Stats daemon and adds it to
+// RegisterGrostatsService configures the Grosh Stats daemon and adds it to
 // the given node.
-func RegisterEthStatsService(stack *node.Node, url string) {
+func RegisterGrostatsService(stack *node.Node, url string) {
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		// Retrieve both eth and les services
 		var ethServ *eth.Grosh
@@ -1583,8 +1583,8 @@ func RegisterEthStatsService(stack *node.Node, url string) {
 		var lesServ *les.LightGrosh
 		ctx.Service(&lesServ)
 
-		// Let ethstats use whichever is not nil
-		return ethstats.New(url, ethServ, lesServ)
+		// Let grostats use whichever is not nil
+		return grostats.New(url, ethServ, lesServ)
 	}); err != nil {
 		Fatalf("Failed to register the Grosh Stats service: %v", err)
 	}

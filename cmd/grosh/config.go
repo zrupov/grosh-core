@@ -70,7 +70,7 @@ var tomlSettings = toml.Config{
 	},
 }
 
-type ethstatsConfig struct {
+type grostatsConfig struct {
 	URL string `toml:",omitempty"`
 }
 
@@ -78,7 +78,7 @@ type gethConfig struct {
 	Eth       eth.Config
 	Shh       whisper.Config
 	Node      node.Config
-	Ethstats  ethstatsConfig
+	Grostats  grostatsConfig
 	Dashboard dashboard.Config
 }
 
@@ -130,8 +130,8 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 		utils.Fatalf("Failed to create the protocol stack: %v", err)
 	}
 	utils.SetEthConfig(ctx, stack, &cfg.Eth)
-	if ctx.GlobalIsSet(utils.EthStatsURLFlag.Name) {
-		cfg.Ethstats.URL = ctx.GlobalString(utils.EthStatsURLFlag.Name)
+	if ctx.GlobalIsSet(utils.GrostatsURLFlag.Name) {
+		cfg.Grostats.URL = ctx.GlobalString(utils.GrostatsURLFlag.Name)
 	}
 	utils.SetShhConfig(ctx, stack, &cfg.Shh)
 	utils.SetDashboardConfig(ctx, &cfg.Dashboard)
@@ -179,8 +179,8 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 		utils.RegisterGraphQLService(stack, cfg.Node.GraphQLEndpoint(), cfg.Node.GraphQLCors, cfg.Node.GraphQLVirtualHosts, cfg.Node.HTTPTimeouts)
 	}
 	// Add the Grosh Stats daemon if requested.
-	if cfg.Ethstats.URL != "" {
-		utils.RegisterEthStatsService(stack, cfg.Ethstats.URL)
+	if cfg.Grostats.URL != "" {
+		utils.RegisterGrostatsService(stack, cfg.Grostats.URL)
 	}
 	return stack
 }

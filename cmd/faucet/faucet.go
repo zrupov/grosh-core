@@ -49,7 +49,7 @@ import (
 	"github.com/groshproject/grosh-core/eth"
 	"github.com/groshproject/grosh-core/eth/downloader"
 	"github.com/groshproject/grosh-core/ethclient"
-	"github.com/groshproject/grosh-core/ethstats"
+	"github.com/groshproject/grosh-core/grostats"
 	"github.com/groshproject/grosh-core/les"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/node"
@@ -67,7 +67,7 @@ var (
 	ethPortFlag = flag.Int("ethport", 30303, "Listener port for the devp2p connection")
 	bootFlag    = flag.String("bootnodes", "", "Comma separated bootnode enode URLs to seed with")
 	netFlag     = flag.Uint64("network", 0, "Network ID to use for the Grosh protocol")
-	statsFlag   = flag.String("ethstats", "", "Ethstats network monitoring auth string")
+	statsFlag   = flag.String("grostats", "", "Grostats network monitoring auth string")
 
 	netnameFlag = flag.String("faucet.name", "", "Network name to assign to the faucet")
 	payoutFlag  = flag.Int("faucet.amount", 1, "Number of Ethers to pay out per user request")
@@ -245,12 +245,12 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}); err != nil {
 		return nil, err
 	}
-	// Assemble the ethstats monitoring and reporting service'
+	// Assemble the grostats monitoring and reporting service'
 	if stats != "" {
 		if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 			var serv *les.LightGrosh
 			ctx.Service(&serv)
-			return ethstats.New(stats, nil, serv)
+			return grostats.New(stats, nil, serv)
 		}); err != nil {
 			return nil, err
 		}

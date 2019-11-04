@@ -35,8 +35,8 @@ FROM puppeth/blockscout:latest
 ADD genesis.json /genesis.json
 RUN \
   echo 'grosh --cache 512 init /genesis.json' > explorer.sh && \
-  echo $'grosh --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,eth,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" --exitwhensynced' >> explorer.sh && \
-  echo $'exec grosh --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,eth,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" &' >> explorer.sh && \
+  echo $'grosh --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --grostats \'{{.Grostats}}\' --cache=512 --rpc --rpcapi "net,web3,eth,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" --exitwhensynced' >> explorer.sh && \
+  echo $'exec grosh --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --grostats \'{{.Grostats}}\' --cache=512 --rpc --rpcapi "net,web3,eth,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" &' >> explorer.sh && \
   echo '/usr/local/bin/docker-entrypoint.sh postgres &' >> explorer.sh && \
   echo 'sleep 5' >> explorer.sh && \
   echo 'mix do ecto.drop --force, ecto.create, ecto.migrate' >> explorer.sh && \
@@ -87,7 +87,7 @@ func deployExplorer(client *sshClient, network string, bootnodes []string, confi
 	template.Must(template.New("").Parse(explorerDockerfile)).Execute(dockerfile, map[string]interface{}{
 		"NetworkID": config.node.network,
 		"Bootnodes": strings.Join(bootnodes, ","),
-		"Ethstats":  config.node.ethstats,
+		"Grostats":  config.node.grostats,
 		"EthPort":   config.node.port,
 	})
 	files[filepath.Join(workdir, "Dockerfile")] = dockerfile.Bytes()
@@ -100,11 +100,11 @@ func deployExplorer(client *sshClient, network string, bootnodes []string, confi
 	template.Must(template.New("").Parse(explorerComposefile)).Execute(composefile, map[string]interface{}{
 		"Network":     network,
 		"VHost":       config.host,
-		"Ethstats":    config.node.ethstats,
+		"Grostats":    config.node.grostats,
 		"Datadir":     config.node.datadir,
 		"DBDir":       config.dbdir,
 		"EthPort":     config.node.port,
-		"EthName":     config.node.ethstats[:strings.Index(config.node.ethstats, ":")],
+		"EthName":     config.node.grostats[:strings.Index(config.node.grostats, ":")],
 		"WebPort":     config.port,
 		"Transformer": transformer,
 	})
@@ -140,7 +140,7 @@ func (info *explorerInfos) Report() map[string]string {
 		"Website address ":        info.host,
 		"Website listener port ":  strconv.Itoa(info.port),
 		"Grosh listener port ": strconv.Itoa(info.node.port),
-		"Ethstats username":       info.node.ethstats,
+		"Grostats username":       info.node.grostats,
 	}
 	return report
 }
@@ -184,7 +184,7 @@ func checkExplorer(client *sshClient, network string) (*explorerInfos, error) {
 		node: &nodeInfos{
 			datadir:  infos.volumes["/opt/app/.grosh"],
 			port:     infos.portmap[infos.envvars["ETH_PORT"]+"/tcp"],
-			ethstats: infos.envvars["ETH_NAME"],
+			grostats: infos.envvars["ETH_NAME"],
 		},
 		dbdir: infos.volumes["/var/lib/postgresql/data"],
 		host:  host,

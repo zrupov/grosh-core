@@ -23,9 +23,9 @@ import (
 	"github.com/groshproject/grosh-core/log"
 )
 
-// deployEthstats queries the user for various input on deploying an ethstats
+// deployGrostats queries the user for various input on deploying an grostats
 // monitoring server, after which it executes it.
-func (w *wizard) deployEthstats() {
+func (w *wizard) deployGrostats() {
 	// Select the server to interact with
 	server := w.selectServer()
 	if server == "" {
@@ -33,10 +33,10 @@ func (w *wizard) deployEthstats() {
 	}
 	client := w.servers[server]
 
-	// Retrieve any active ethstats configurations from the server
-	infos, err := checkEthstats(client, w.network)
+	// Retrieve any active grostats configurations from the server
+	infos, err := checkGrostats(client, w.network)
 	if err != nil {
-		infos = &ethstatsInfos{
+		infos = &grostatsInfos{
 			port:   80,
 			host:   client.server,
 			secret: "",
@@ -46,15 +46,15 @@ func (w *wizard) deployEthstats() {
 
 	// Figure out which port to listen on
 	fmt.Println()
-	fmt.Printf("Which port should ethstats listen on? (default = %d)\n", infos.port)
+	fmt.Printf("Which port should grostats listen on? (default = %d)\n", infos.port)
 	infos.port = w.readDefaultInt(infos.port)
 
-	// Figure which virtual-host to deploy ethstats on
+	// Figure which virtual-host to deploy grostats on
 	if infos.host, err = w.ensureVirtualHost(client, infos.port, infos.host); err != nil {
-		log.Error("Failed to decide on ethstats host", "err", err)
+		log.Error("Failed to decide on grostats host", "err", err)
 		return
 	}
-	// Port and proxy settings retrieved, figure out the secret and boot ethstats
+	// Port and proxy settings retrieved, figure out the secret and boot grostats
 	fmt.Println()
 	if infos.secret == "" {
 		fmt.Printf("What should be the secret password for the API? (must not be empty)\n")
@@ -101,11 +101,11 @@ func (w *wizard) deployEthstats() {
 			sort.Strings(infos.banned)
 		}
 	}
-	// Try to deploy the ethstats server on the host
+	// Try to deploy the grostats server on the host
 	nocache := false
 	if existed {
 		fmt.Println()
-		fmt.Printf("Should the ethstats be built from scratch (y/n)? (default = no)\n")
+		fmt.Printf("Should the grostats be built from scratch (y/n)? (default = no)\n")
 		nocache = w.readDefaultYesNo(false)
 	}
 	trusted := make([]string, 0, len(w.servers))
@@ -114,8 +114,8 @@ func (w *wizard) deployEthstats() {
 			trusted = append(trusted, client.address)
 		}
 	}
-	if out, err := deployEthstats(client, w.network, infos.port, infos.secret, infos.host, trusted, infos.banned, nocache); err != nil {
-		log.Error("Failed to deploy ethstats container", "err", err)
+	if out, err := deployGrostats(client, w.network, infos.port, infos.secret, infos.host, trusted, infos.banned, nocache); err != nil {
+		log.Error("Failed to deploy grostats container", "err", err)
 		if len(out) > 0 {
 			fmt.Printf("%s\n", out)
 		}

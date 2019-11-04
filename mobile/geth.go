@@ -28,7 +28,7 @@ import (
 	"github.com/groshproject/grosh-core/eth"
 	"github.com/groshproject/grosh-core/eth/downloader"
 	"github.com/groshproject/grosh-core/ethclient"
-	"github.com/groshproject/grosh-core/ethstats"
+	"github.com/groshproject/grosh-core/grostats"
 	"github.com/groshproject/grosh-core/internal/debug"
 	"github.com/groshproject/grosh-core/les"
 	"github.com/groshproject/grosh-core/node"
@@ -172,7 +172,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 				var lesServ *les.LightGrosh
 				ctx.Service(&lesServ)
 
-				return ethstats.New(config.GroshNetStats, nil, lesServ)
+				return grostats.New(config.GroshNetStats, nil, lesServ)
 			}); err != nil {
 				return nil, fmt.Errorf("netstats init: %v", err)
 			}
