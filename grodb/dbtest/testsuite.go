@@ -22,12 +22,12 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 )
 
 // TestDatabaseSuite runs a suite of tests against a KeyValueStore database
 // implementation.
-func TestDatabaseSuite(t *testing.T, New func() ethdb.KeyValueStore) {
+func TestDatabaseSuite(t *testing.T, New func() grodb.KeyValueStore) {
 	t.Run("Iterator", func(t *testing.T) {
 		tests := []struct {
 			content map[string]string
@@ -305,7 +305,7 @@ func TestDatabaseSuite(t *testing.T, New func() ethdb.KeyValueStore) {
 
 }
 
-func iterateKeys(it ethdb.Iterator) []string {
+func iterateKeys(it grodb.Iterator) []string {
 	keys := []string{}
 	for it.Next() {
 		keys = append(keys, string(it.Key()))

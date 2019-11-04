@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	"github.com/groshproject/grosh-core/common"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 )
 
 // Tests that the node iterator indeed walks over the entire database contents.
@@ -51,7 +51,7 @@ func TestNodeIteratorCoverage(t *testing.T) {
 			t.Errorf("state entry not reported %x", hash)
 		}
 	}
-	it := db.TrieDB().DiskDB().(ethdb.Database).NewIterator()
+	it := db.TrieDB().DiskDB().(grodb.Database).NewIterator()
 	for it.Next() {
 		key := it.Key()
 		if bytes.HasPrefix(key, []byte("secure-key-")) {

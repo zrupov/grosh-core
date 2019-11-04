@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
-package ethdb
+package grodb
 
 // IdealBatchSize defines the size of the data batches should ideally add in one
 // write.

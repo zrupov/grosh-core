@@ -26,7 +26,7 @@ import (
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/core/types"
 	"github.com/groshproject/grosh-core/eth"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/light"
 	"github.com/groshproject/grosh-core/p2p"
 	"github.com/groshproject/grosh-core/p2p/discv5"
@@ -59,7 +59,7 @@ type lesCommons struct {
 	config                       *eth.Config
 	chainConfig                  *params.ChainConfig
 	iConfig                      *light.IndexerConfig
-	chainDb                      ethdb.Database
+	chainDb                      grodb.Database
 	peers                        *peerSet
 	chainReader                  chainReader
 	chtIndexer, bloomTrieIndexer *core.ChainIndexer

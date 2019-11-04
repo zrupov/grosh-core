@@ -25,13 +25,13 @@ import (
 	"github.com/groshproject/grosh-core/core"
 	"github.com/groshproject/grosh-core/core/bloombits"
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/rpc"
 )
 
 type Backend interface {
-	ChainDb() ethdb.Database
+	ChainDb() grodb.Database
 	EventMux() *event.TypeMux
 	HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error)
 	HeaderByHash(ctx context.Context, blockHash common.Hash) (*types.Header, error)
@@ -51,7 +51,7 @@ type Backend interface {
 type Filter struct {
 	backend Backend
 
-	db        ethdb.Database
+	db        grodb.Database
 	addresses []common.Address
 	topics    [][]common.Hash
 

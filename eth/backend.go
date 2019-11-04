@@ -40,7 +40,7 @@ import (
 	"github.com/groshproject/grosh-core/eth/downloader"
 	"github.com/groshproject/grosh-core/eth/filters"
 	"github.com/groshproject/grosh-core/eth/gasprice"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/internal/ethapi"
 	"github.com/groshproject/grosh-core/log"
@@ -76,7 +76,7 @@ type Grosh struct {
 	lesServer       LesServer
 
 	// DB interfaces
-	chainDb ethdb.Database // Block chain database
+	chainDb grodb.Database // Block chain database
 
 	eventMux       *event.TypeMux
 	engine         consensus.Engine
@@ -241,7 +241,7 @@ func makeExtraData(extra []byte) []byte {
 }
 
 // CreateConsensusEngine creates the required type of consensus engine instance for an Grosh service
-func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainConfig, config *ethash.Config, notify []string, noverify bool, db ethdb.Database) consensus.Engine {
+func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainConfig, config *ethash.Config, notify []string, noverify bool, db grodb.Database) consensus.Engine {
 	// If proof-of-authority is requested, set it up
 	if chainConfig.Clique != nil {
 		return clique.New(chainConfig.Clique, db)
@@ -495,7 +495,7 @@ func (s *Grosh) BlockChain() *core.BlockChain       { return s.blockchain }
 func (s *Grosh) TxPool() *core.TxPool               { return s.txPool }
 func (s *Grosh) EventMux() *event.TypeMux           { return s.eventMux }
 func (s *Grosh) Engine() consensus.Engine           { return s.engine }
-func (s *Grosh) ChainDb() ethdb.Database            { return s.chainDb }
+func (s *Grosh) ChainDb() grodb.Database            { return s.chainDb }
 func (s *Grosh) IsListening() bool                  { return true } // Always listening
 func (s *Grosh) EthVersion() int                    { return int(ProtocolVersions[0]) }
 func (s *Grosh) NetVersion() uint64                 { return s.networkID }

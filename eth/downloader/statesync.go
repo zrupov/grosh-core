@@ -25,7 +25,7 @@ import (
 	"github.com/groshproject/grosh-core/common"
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/core/state"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/trie"
 	"golang.org/x/crypto/sha3"
@@ -342,7 +342,7 @@ func (s *stateSync) loop() (err error) {
 }
 
 func (s *stateSync) commit(force bool) error {
-	if !force && s.bytesUncommitted < ethdb.IdealBatchSize {
+	if !force && s.bytesUncommitted < grodb.IdealBatchSize {
 		return nil
 	}
 	start := time.Now()

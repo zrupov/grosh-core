@@ -24,12 +24,12 @@ import (
 	"github.com/groshproject/grosh-core/common"
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/crypto"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	checker "gopkg.in/check.v1"
 )
 
 type StateSuite struct {
-	db    ethdb.Database
+	db    grodb.Database
 	state *StateDB
 }
 

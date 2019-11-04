@@ -22,7 +22,7 @@ import (
 
 	"github.com/groshproject/grosh-core/common"
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/rlp"
 )
 
@@ -30,17 +30,17 @@ import (
 func TestLookupStorage(t *testing.T) {
 	tests := []struct {
 		name                 string
-		writeTxLookupEntries func(ethdb.Writer, *types.Block)
+		writeTxLookupEntries func(grodb.Writer, *types.Block)
 	}{
 		{
 			"DatabaseV6",
-			func(db ethdb.Writer, block *types.Block) {
+			func(db grodb.Writer, block *types.Block) {
 				WriteTxLookupEntries(db, block)
 			},
 		},
 		{
 			"DatabaseV4-V5",
-			func(db ethdb.Writer, block *types.Block) {
+			func(db grodb.Writer, block *types.Block) {
 				for _, tx := range block.Transactions() {
 					db.Put(txLookupKey(tx.Hash()), block.Hash().Bytes())
 				}
@@ -48,7 +48,7 @@ func TestLookupStorage(t *testing.T) {
 		},
 		{
 			"DatabaseV3",
-			func(db ethdb.Writer, block *types.Block) {
+			func(db grodb.Writer, block *types.Block) {
 				for index, tx := range block.Transactions() {
 					entry := LegacyTxLookupEntry{
 						BlockHash:  block.Hash(),

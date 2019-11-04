@@ -27,7 +27,7 @@ import (
 	"github.com/groshproject/grosh-core/core/bloombits"
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/node"
 )
@@ -147,7 +147,7 @@ func benchmarkBloomBits(b *testing.B, sectionSize uint64) {
 
 var bloomBitsPrefix = []byte("bloomBits-")
 
-func clearBloomBits(db ethdb.Database) {
+func clearBloomBits(db grodb.Database) {
 	fmt.Println("Clearing bloombits data...")
 	it := db.NewIteratorWithPrefix(bloomBitsPrefix)
 	for it.Next() {

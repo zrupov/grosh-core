@@ -29,7 +29,7 @@ import (
 
 	"github.com/groshproject/grosh-core/common/mclock"
 	"github.com/groshproject/grosh-core/crypto"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/p2p"
 	"github.com/groshproject/grosh-core/p2p/discv5"
@@ -112,7 +112,7 @@ type registerReq struct {
 // known light server nodes. It received discovered nodes, stores statistics about
 // known nodes and takes care of always having enough good quality servers connected.
 type serverPool struct {
-	db     ethdb.Database
+	db     grodb.Database
 	dbKey  []byte
 	server *p2p.Server
 	connWg sync.WaitGroup
@@ -141,7 +141,7 @@ type serverPool struct {
 }
 
 // newServerPool creates a new serverPool instance
-func newServerPool(db ethdb.Database, ulcServers []string) *serverPool {
+func newServerPool(db grodb.Database, ulcServers []string) *serverPool {
 	pool := &serverPool{
 		db:           db,
 		entries:      make(map[enode.ID]*poolEntry),

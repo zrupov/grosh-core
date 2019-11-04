@@ -33,7 +33,7 @@ import (
 	"github.com/groshproject/grosh-core/core/types"
 	"github.com/groshproject/grosh-core/core/vm"
 	"github.com/groshproject/grosh-core/crypto"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/params"
 	"github.com/groshproject/grosh-core/rlp"
 	"golang.org/x/crypto/sha3"
@@ -204,7 +204,7 @@ func (t *StateTest) gasLimit(subtest StateSubtest) uint64 {
 	return t.json.Tx.GasLimit[t.json.Post[subtest.Fork][subtest.Index].Indexes.Gas]
 }
 
-func MakePreState(db ethdb.Database, accounts core.GenesisAlloc) *state.StateDB {
+func MakePreState(db grodb.Database, accounts core.GenesisAlloc) *state.StateDB {
 	sdb := state.NewDatabase(db)
 	statedb, _ := state.New(common.Hash{}, sdb)
 	for addr, a := range accounts {

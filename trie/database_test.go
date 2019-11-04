@@ -20,7 +20,7 @@ import (
 	"testing"
 
 	"github.com/groshproject/grosh-core/common"
-	"github.com/groshproject/grosh-core/ethdb/memorydb"
+	"github.com/groshproject/grosh-core/grodb/memorydb"
 )
 
 // Tests that the trie database returns a missing trie node error if attempting

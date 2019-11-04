@@ -26,7 +26,7 @@ import (
 	"time"
 
 	"github.com/groshproject/grosh-core/common"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/metrics"
 	"github.com/groshproject/grosh-core/params"
@@ -251,7 +251,7 @@ func (f *freezer) Sync() error {
 //
 // This functionality is deliberately broken off from block importing to avoid
 // incurring additional data shuffling delays on block propagation.
-func (f *freezer) freeze(db ethdb.KeyValueStore) {
+func (f *freezer) freeze(db grodb.KeyValueStore) {
 	nfdb := &nofreezedb{KeyValueStore: db}
 
 	for {

@@ -24,7 +24,7 @@ import (
 
 	"github.com/groshproject/grosh-core/common"
 	"github.com/groshproject/grosh-core/crypto"
-	"github.com/groshproject/grosh-core/ethdb/memorydb"
+	"github.com/groshproject/grosh-core/grodb/memorydb"
 )
 
 func newEmptySecure() *SecureTrie {

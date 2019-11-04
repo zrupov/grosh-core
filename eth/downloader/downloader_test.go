@@ -30,7 +30,7 @@ import (
 	"github.com/groshproject/grosh-core/common"
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/trie"
 )
@@ -47,8 +47,8 @@ type downloadTester struct {
 	downloader *Downloader
 
 	genesis *types.Block   // Genesis blocks used by the tester and peers
-	stateDb ethdb.Database // Database used by the tester for syncing from peers
-	peerDb  ethdb.Database // Database of the peers containing all data
+	stateDb grodb.Database // Database used by the tester for syncing from peers
+	peerDb  grodb.Database // Database of the peers containing all data
 	peers   map[string]*downloadTesterPeer
 
 	ownHashes   []common.Hash                  // Hash chain belonging to the tester

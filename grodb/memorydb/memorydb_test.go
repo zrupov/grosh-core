@@ -1,4 +1,4 @@
-// Copyright 2019 The go-grosh Authors
+// Copyright 2018 The go-grosh Authors
 // This file is part of the go-grosh library.
 //
 // The go-grosh library is free software: you can redistribute it and/or modify
@@ -14,27 +14,19 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-grosh library. If not, see <http://www.gnu.org/licenses/>.
 
-package leveldb
+package memorydb
 
 import (
 	"testing"
 
-	"github.com/groshproject/grosh-core/ethdb"
-	"github.com/groshproject/grosh-core/ethdb/dbtest"
-	"github.com/syndtr/goleveldb/leveldb"
-	"github.com/syndtr/goleveldb/leveldb/storage"
+	"github.com/groshproject/grosh-core/grodb"
+	"github.com/groshproject/grosh-core/grodb/dbtest"
 )
 
-func TestLevelDB(t *testing.T) {
+func TestMemoryDB(t *testing.T) {
 	t.Run("DatabaseSuite", func(t *testing.T) {
-		dbtest.TestDatabaseSuite(t, func() ethdb.KeyValueStore {
-			db, err := leveldb.Open(storage.NewMemStorage(), nil)
-			if err != nil {
-				t.Fatal(err)
-			}
-			return &Database{
-				db: db,
-			}
+		dbtest.TestDatabaseSuite(t, func() grodb.KeyValueStore {
+			return New()
 		})
 	})
 }

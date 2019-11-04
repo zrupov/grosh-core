@@ -29,7 +29,7 @@ import (
 	"github.com/groshproject/grosh-core/core/types"
 	"github.com/groshproject/grosh-core/core/vm"
 	"github.com/groshproject/grosh-core/eth/downloader"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/params"
 	"github.com/groshproject/grosh-core/rpc"
@@ -42,7 +42,7 @@ type Backend interface {
 	Downloader() *downloader.Downloader
 	ProtocolVersion() int
 	SuggestPrice(ctx context.Context) (*big.Int, error)
-	ChainDb() ethdb.Database
+	ChainDb() grodb.Database
 	EventMux() *event.TypeMux
 	AccountManager() *accounts.Manager
 	ExtRPCEnabled() bool

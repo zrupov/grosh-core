@@ -31,9 +31,9 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/groshproject/grosh-core/common"
 	"github.com/groshproject/grosh-core/crypto"
-	"github.com/groshproject/grosh-core/ethdb"
-	"github.com/groshproject/grosh-core/ethdb/leveldb"
-	"github.com/groshproject/grosh-core/ethdb/memorydb"
+	"github.com/groshproject/grosh-core/grodb"
+	"github.com/groshproject/grosh-core/grodb/leveldb"
+	"github.com/groshproject/grosh-core/grodb/memorydb"
 	"github.com/groshproject/grosh-core/rlp"
 )
 
@@ -318,7 +318,7 @@ func TestLargeValue(t *testing.T) {
 }
 
 type countingDB struct {
-	ethdb.KeyValueStore
+	grodb.KeyValueStore
 	gets map[string]int
 }
 

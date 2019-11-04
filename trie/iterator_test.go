@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	"github.com/groshproject/grosh-core/common"
-	"github.com/groshproject/grosh-core/ethdb/memorydb"
+	"github.com/groshproject/grosh-core/grodb/memorydb"
 )
 
 func TestIterator(t *testing.T) {

@@ -32,7 +32,7 @@ import (
 	"github.com/groshproject/grosh-core/core/vm"
 	"github.com/groshproject/grosh-core/eth/downloader"
 	"github.com/groshproject/grosh-core/eth/gasprice"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/light"
 	"github.com/groshproject/grosh-core/params"
@@ -184,7 +184,7 @@ func (b *LesApiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
 	return b.gpo.SuggestPrice(ctx)
 }
 
-func (b *LesApiBackend) ChainDb() ethdb.Database {
+func (b *LesApiBackend) ChainDb() grodb.Database {
 	return b.eth.chainDb
 }
 

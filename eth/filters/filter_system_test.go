@@ -32,7 +32,7 @@ import (
 	"github.com/groshproject/grosh-core/core/bloombits"
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/event"
 	"github.com/groshproject/grosh-core/params"
 	"github.com/groshproject/grosh-core/rpc"
@@ -40,7 +40,7 @@ import (
 
 type testBackend struct {
 	mux        *event.TypeMux
-	db         ethdb.Database
+	db         grodb.Database
 	sections   uint64
 	txFeed     *event.Feed
 	rmLogsFeed *event.Feed
@@ -48,7 +48,7 @@ type testBackend struct {
 	chainFeed  *event.Feed
 }
 
-func (b *testBackend) ChainDb() ethdb.Database {
+func (b *testBackend) ChainDb() grodb.Database {
 	return b.db
 }
 

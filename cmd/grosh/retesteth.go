@@ -39,7 +39,7 @@ import (
 	"github.com/groshproject/grosh-core/core/types"
 	"github.com/groshproject/grosh-core/core/vm"
 	"github.com/groshproject/grosh-core/crypto"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/node"
 	"github.com/groshproject/grosh-core/params"
@@ -102,7 +102,7 @@ type RetestWeb3API interface {
 }
 
 type RetestethAPI struct {
-	ethDb         ethdb.Database
+	grodb         grodb.Database
 	db            state.Database
 	chainConfig   *params.ChainConfig
 	author        common.Address
@@ -280,10 +280,10 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 	if api.engine != nil {
 		api.engine.Close()
 	}
-	if api.ethDb != nil {
-		api.ethDb.Close()
+	if api.grodb != nil {
+		api.grodb.Close()
 	}
-	ethDb := rawdb.NewMemoryDatabase()
+	grodb := rawdb.NewMemoryDatabase()
 	accounts := make(core.GenesisAlloc)
 	for address, account := range chainParams.Accounts {
 		balance := big.NewInt(0)
@@ -375,7 +375,7 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 		ParentHash: chainParams.Genesis.ParentHash,
 		Alloc:      accounts,
 	}
-	chainConfig, genesisHash, err := core.SetupGenesisBlock(ethDb, genesis)
+	chainConfig, genesisHash, err := core.SetupGenesisBlock(grodb, genesis)
 	if err != nil {
 		return false, err
 	}
@@ -398,7 +398,7 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 	}
 	engine := &NoRewardEngine{inner: inner, rewardsOn: chainParams.SealEngine != "NoReward"}
 
-	blockchain, err := core.NewBlockChain(ethDb, nil, chainConfig, engine, vm.Config{}, nil)
+	blockchain, err := core.NewBlockChain(grodb, nil, chainConfig, engine, vm.Config{}, nil)
 	if err != nil {
 		return false, err
 	}
@@ -407,10 +407,10 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 	api.genesisHash = genesisHash
 	api.author = chainParams.Genesis.Author
 	api.extraData = chainParams.Genesis.ExtraData
-	api.ethDb = ethDb
+	api.grodb = grodb
 	api.engine = engine
 	api.blockchain = blockchain
-	api.db = state.NewDatabase(api.ethDb)
+	api.db = state.NewDatabase(api.grodb)
 	api.blockNumber = 0
 	api.txMap = make(map[common.Address]map[uint64]*types.Transaction)
 	api.txSenders = make(map[common.Address]struct{})
@@ -451,8 +451,8 @@ func (api *RetestethAPI) MineBlocks(ctx context.Context, number uint64) (bool, e
 }
 
 func (api *RetestethAPI) mineBlock() error {
-	parentHash := rawdb.ReadCanonicalHash(api.ethDb, api.blockNumber)
-	parent := rawdb.ReadBlock(api.ethDb, parentHash, api.blockNumber)
+	parentHash := rawdb.ReadCanonicalHash(api.grodb, api.blockNumber)
+	parent := rawdb.ReadBlock(api.grodb, parentHash, api.blockNumber)
 	var timestamp uint64
 	if api.blockInterval == 0 {
 		timestamp = uint64(time.Now().Unix())
@@ -583,7 +583,7 @@ func (api *RetestethAPI) RewindToBlock(ctx context.Context, newHead uint64) (boo
 var emptyListHash common.Hash = common.HexToHash("0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347")
 
 func (api *RetestethAPI) GetLogHash(ctx context.Context, txHash common.Hash) (common.Hash, error) {
-	receipt, _, _, _ := rawdb.ReadReceipt(api.ethDb, txHash, api.chainConfig)
+	receipt, _, _, _ := rawdb.ReadReceipt(api.grodb, txHash, api.chainConfig)
 	if receipt == nil {
 		return emptyListHash, nil
 	} else {

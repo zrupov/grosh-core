@@ -30,7 +30,7 @@ import (
 	"github.com/groshproject/grosh-core/core/rawdb"
 	"github.com/groshproject/grosh-core/core/state"
 	"github.com/groshproject/grosh-core/core/types"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/light"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/metrics"
@@ -63,7 +63,7 @@ var (
 // all incoming light requests.
 type serverHandler struct {
 	blockchain *core.BlockChain
-	chainDb    ethdb.Database
+	chainDb    grodb.Database
 	txpool     *core.TxPool
 	server     *LesServer
 
@@ -75,7 +75,7 @@ type serverHandler struct {
 	addTxsSync bool
 }
 
-func newServerHandler(server *LesServer, blockchain *core.BlockChain, chainDb ethdb.Database, txpool *core.TxPool, synced func() bool) *serverHandler {
+func newServerHandler(server *LesServer, blockchain *core.BlockChain, chainDb grodb.Database, txpool *core.TxPool, synced func() bool) *serverHandler {
 	handler := &serverHandler{
 		server:     server,
 		blockchain: blockchain,

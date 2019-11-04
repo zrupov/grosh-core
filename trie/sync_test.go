@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	"github.com/groshproject/grosh-core/common"
-	"github.com/groshproject/grosh-core/ethdb/memorydb"
+	"github.com/groshproject/grosh-core/grodb/memorydb"
 )
 
 // makeTestTrie create a sample test trie to test node-wise reconstruction.

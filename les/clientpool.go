@@ -24,7 +24,7 @@ import (
 
 	"github.com/groshproject/grosh-core/common/mclock"
 	"github.com/groshproject/grosh-core/common/prque"
-	"github.com/groshproject/grosh-core/ethdb"
+	"github.com/groshproject/grosh-core/grodb"
 	"github.com/groshproject/grosh-core/log"
 	"github.com/groshproject/grosh-core/p2p/enode"
 	"github.com/groshproject/grosh-core/rlp"
@@ -59,7 +59,7 @@ var (
 // values when necessary. Positive balances are stored in the database as long as
 // they exist, posBalanceQueue only acts as a cache for recently accessed entries.
 type clientPool struct {
-	db         ethdb.Database
+	db         grodb.Database
 	lock       sync.Mutex
 	clock      mclock.Clock
 	stopCh     chan chan struct{}
@@ -138,7 +138,7 @@ type priceFactors struct {
 }
 
 // newClientPool creates a new client pool
-func newClientPool(db ethdb.Database, freeClientCap uint64, queueLimit int, clock mclock.Clock, removePeer func(enode.ID)) *clientPool {
+func newClientPool(db grodb.Database, freeClientCap uint64, queueLimit int, clock mclock.Clock, removePeer func(enode.ID)) *clientPool {
 	pool := &clientPool{
 		db:              db,
 		clock:           clock,
